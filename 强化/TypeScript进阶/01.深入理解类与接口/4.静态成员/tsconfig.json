@@ -1,0 +1,17 @@
+{
+    "compilerOptions":{ // 编译选项
+        "target":"es2016", // 编译结果是什么js标准 默认为es3
+        "module":"commonjs", // 编译目标使用的模块化标准
+        "lib":["es2016"], // 运行环境
+        "outDir":"./dist", // 编译结果目录
+        "strictNullChecks": true, // 更加严格的空类型检查
+        "removeComments": true, // 编译结果中移除注释
+        // "noImplicitUseStrict": true, // 去除编译后的严格模式
+        "esModuleInterop": true, // 启用es模块化交互非es模块导出
+        "noEmitOnError": true, //  错误时不生成编译结果
+        "moduleResolution": "node", // 模块解析策略 可以是node方式或classic
+        "strictPropertyInitialization": true, // 更加严格的方式校验属性是否初始化
+    },
+    "include":["./src"], // 要编译的文件夹
+    // "files":["./src/index.ts"], // 如果需要编译某个文件
+}
