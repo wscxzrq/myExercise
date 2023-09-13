@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            粘性定位 中需要寻找最近的overflow 不是 visible 的元素来定位
+            当滚动条到达定位位置后，会吸附，当离开滚动条后会释放吸附效果
+        */
+        .background_sticky {
+            width: 50%;
+            height:500px;
+            border: 1px solid red;
+            overflow: auto;
+        }
+        .background_sticky div {
+            position: sticky;
+            top: 0;
+        }
+        .first {
+            width: 100%;
+            height: inherit;
+            background: url('https://img1.baidu.com/it/u=2468362699,2612376962&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1679418000&t=b5ef60172a53f68c5d587e11be9f041a') no-repeat 100% 100%;
+        }
+        .second {
+            width: 100%;
+            height: inherit;
+            background: url('https://img0.baidu.com/it/u=2693313206,3402454070&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1679418000&t=0c7a62bb7e565ef012c249937728819d') no-repeat 100%/cover;
+        }
+        .third {
+            width: 100%;
+            height: inherit;
+            background: url('https://img2.baidu.com/it/u=2458682166,2276707696&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500') no-repeat 100% 100%;
+        }
+        .fourth {
+            width: 100%;
+            height: inherit;
+            background: url('https://img2.baidu.com/it/u=1665230139,3573837695&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500') no-repeat 100% 100%;
+        }
+        .fifth {
+            width: 100%;
+            height: inherit;
+            background: url('https://img1.baidu.com/it/u=2468362699,2612376962&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1679418000&t=b5ef60172a53f68c5d587e11be9f041a') no-repeat 100% 100%;
+        }
+        .text_sticky {
+            width: 50%;
+            height:300px;
+            overflow:auto;
+        }
+        .text_sticky dt {
+            width: 100%;
+            height:30px;
+            line-height: 30px;
+            background-color: hotpink;
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="background_sticky">
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+        <div class="fourth"></div>
+        <div class="fifth"></div>
+    </div>
+    <div class="text_sticky">
+        <dl>
+            <dt>A</dt>
+            <dd>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet iure iste doloribus obcaecati, aliquam eius, veritatis laboriosam doloremque repellat ab totam ut asperiores eum quas quibusdam fuga dolorem! Laborum, eius?</dd>
+            <dd>Labore perferendis, deleniti molestias sunt, repudiandae voluptatum consectetur rem excepturi iure natus nemo rerum. Distinctio fuga natus quam tempore non, in quae saepe illum aliquid dolor ea officiis, necessitatibus iure?</dd>
+            <dd>Maiores a alias doloremque tenetur recusandae blanditiis perspiciatis voluptatem ducimus rerum iure, numquam iste nisi velit reprehenderit impedit inventore saepe perferendis nobis. Aliquam cum tempore, iste aliquid distinctio quod at.</dd>
+            <dd>Veniam ex amet vitae voluptas voluptates at quas, molestiae aliquam quod repudiandae, libero explicabo ratione quos odit rem et sunt illo. Esse dolores aspernatur facere natus magnam earum! Voluptatibus, numquam?</dd>
+            <dd>Expedita, ad nisi? Minus esse libero nisi, iste, aperiam ab nostrum alias veritatis eaque enim ut quam tempore voluptatum harum! Neque quod tempore totam, quae temporibus veniam. Beatae, eum eius.</dd>
+            <dd>Necessitatibus nihil quidem dolores voluptas, eius sequi doloremque, ratione totam a dolorum quam porro alias eum quas qui nemo officiis voluptate tenetur cumque dicta veniam in! Ullam repudiandae nisi necessitatibus?</dd>
+            <dd>Ratione perspiciatis quaerat ut tempora vitae dolor! Corrupti dolorem vitae, qui possimus voluptatum eaque illum, sunt delectus eius cupiditate temporibus facilis aspernatur rem perspiciatis consequuntur eveniet alias ipsam laudantium sequi!</dd>
+            <dd>Quo reiciendis mollitia ipsam tempora atque corporis adipisci magni laborum nulla accusamus doloribus, repellendus necessitatibus? Quas ipsa quam vitae, eligendi saepe dolorum accusantium similique sint, cum beatae distinctio, cupiditate dignissimos!</dd>
+            <dd>Magnam, officia voluptate totam nostrum deleniti enim architecto id veritatis at aspernatur nobis pariatur sint repellat, eos inventore atque accusantium optio deserunt est suscipit aperiam ducimus? Consectetur voluptate autem quos.</dd>
+            <dd>Repellat laboriosam dolor recusandae in excepturi earum molestiae odit. Mollitia fugiat harum in, quasi ipsa corrupti atque voluptatem culpa enim consectetur distinctio cum, natus doloribus numquam tenetur minima debitis quos.</dd>
+            <dt>B</dt>
+            <dd>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet iure iste doloribus obcaecati, aliquam eius, veritatis laboriosam doloremque repellat ab totam ut asperiores eum quas quibusdam fuga dolorem! Laborum, eius?</dd>
+            <dd>Labore perferendis, deleniti molestias sunt, repudiandae voluptatum consectetur rem excepturi iure natus nemo rerum. Distinctio fuga natus quam tempore non, in quae saepe illum aliquid dolor ea officiis, necessitatibus iure?</dd>
+            <dd>Maiores a alias doloremque tenetur recusandae blanditiis perspiciatis voluptatem ducimus rerum iure, numquam iste nisi velit reprehenderit impedit inventore saepe perferendis nobis. Aliquam cum tempore, iste aliquid distinctio quod at.</dd>
+            <dd>Veniam ex amet vitae voluptas voluptates at quas, molestiae aliquam quod repudiandae, libero explicabo ratione quos odit rem et sunt illo. Esse dolores aspernatur facere natus magnam earum! Voluptatibus, numquam?</dd>
+            <dd>Expedita, ad nisi? Minus esse libero nisi, iste, aperiam ab nostrum alias veritatis eaque enim ut quam tempore voluptatum harum! Neque quod tempore totam, quae temporibus veniam. Beatae, eum eius.</dd>
+            <dd>Necessitatibus nihil quidem dolores voluptas, eius sequi doloremque, ratione totam a dolorum quam porro alias eum quas qui nemo officiis voluptate tenetur cumque dicta veniam in! Ullam repudiandae nisi necessitatibus?</dd>
+            <dd>Ratione perspiciatis quaerat ut tempora vitae dolor! Corrupti dolorem vitae, qui possimus voluptatum eaque illum, sunt delectus eius cupiditate temporibus facilis aspernatur rem perspiciatis consequuntur eveniet alias ipsam laudantium sequi!</dd>
+            <dd>Quo reiciendis mollitia ipsam tempora atque corporis adipisci magni laborum nulla accusamus doloribus, repellendus necessitatibus? Quas ipsa quam vitae, eligendi saepe dolorum accusantium similique sint, cum beatae distinctio, cupiditate dignissimos!</dd>
+            <dd>Magnam, officia voluptate totam nostrum deleniti enim architecto id veritatis at aspernatur nobis pariatur sint repellat, eos inventore atque accusantium optio deserunt est suscipit aperiam ducimus? Consectetur voluptate autem quos.</dd>
+            <dd>Repellat laboriosam dolor recusandae in excepturi earum molestiae odit. Mollitia fugiat harum in, quasi ipsa corrupti atque voluptatem culpa enim consectetur distinctio cum, natus doloribus numquam tenetur minima debitis quos.</dd>
+            <dt>C</dt>
+            <dd>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet iure iste doloribus obcaecati, aliquam eius, veritatis laboriosam doloremque repellat ab totam ut asperiores eum quas quibusdam fuga dolorem! Laborum, eius?</dd>
+            <dd>Labore perferendis, deleniti molestias sunt, repudiandae voluptatum consectetur rem excepturi iure natus nemo rerum. Distinctio fuga natus quam tempore non, in quae saepe illum aliquid dolor ea officiis, necessitatibus iure?</dd>
+            <dd>Maiores a alias doloremque tenetur recusandae blanditiis perspiciatis voluptatem ducimus rerum iure, numquam iste nisi velit reprehenderit impedit inventore saepe perferendis nobis. Aliquam cum tempore, iste aliquid distinctio quod at.</dd>
+            <dd>Veniam ex amet vitae voluptas voluptates at quas, molestiae aliquam quod repudiandae, libero explicabo ratione quos odit rem et sunt illo. Esse dolores aspernatur facere natus magnam earum! Voluptatibus, numquam?</dd>
+            <dd>Expedita, ad nisi? Minus esse libero nisi, iste, aperiam ab nostrum alias veritatis eaque enim ut quam tempore voluptatum harum! Neque quod tempore totam, quae temporibus veniam. Beatae, eum eius.</dd>
+            <dd>Necessitatibus nihil quidem dolores voluptas, eius sequi doloremque, ratione totam a dolorum quam porro alias eum quas qui nemo officiis voluptate tenetur cumque dicta veniam in! Ullam repudiandae nisi necessitatibus?</dd>
+            <dd>Ratione perspiciatis quaerat ut tempora vitae dolor! Corrupti dolorem vitae, qui possimus voluptatum eaque illum, sunt delectus eius cupiditate temporibus facilis aspernatur rem perspiciatis consequuntur eveniet alias ipsam laudantium sequi!</dd>
+            <dd>Quo reiciendis mollitia ipsam tempora atque corporis adipisci magni laborum nulla accusamus doloribus, repellendus necessitatibus? Quas ipsa quam vitae, eligendi saepe dolorum accusantium similique sint, cum beatae distinctio, cupiditate dignissimos!</dd>
+            <dd>Magnam, officia voluptate totam nostrum deleniti enim architecto id veritatis at aspernatur nobis pariatur sint repellat, eos inventore atque accusantium optio deserunt est suscipit aperiam ducimus? Consectetur voluptate autem quos.</dd>
+            <dd>Repellat laboriosam dolor recusandae in excepturi earum molestiae odit. Mollitia fugiat harum in, quasi ipsa corrupti atque voluptatem culpa enim consectetur distinctio cum, natus doloribus numquam tenetur minima debitis quos.</dd>
+        </dl>
+    </div>
+</body>
+</html>

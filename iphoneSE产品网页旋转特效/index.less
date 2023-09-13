@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    background-color: #131313;
+    #sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    canvas {
+        position: relative;
+        margin-top: -100px;
+        // background-color: #fff;
+    }
+    .left,.right {
+        font-size: 28px;
+        color: #fff;
+        font-family: Helvetica;
+        font-weight: bold;
+        position: absolute;
+        top:45%;
+        opacity: 0;
+    }
+    .left {
+        left: 50%;
+    }
+    .right {
+        right: 50%;
+    }
+    #loading {
+        font-size: 28px;
+        font-family: Helvetica;
+        color: #fff;
+        position: absolute;
+        width: 45vw;
+        text-align: center;
+        z-index: 10;
+        font-weight: bold;
+        background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2002878/iphone-se.01.png') no-repeat center center;
+        background-size: contain;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -50px;
+        transition: .5s opacity ease-in-out;
+        transition-delay: 2s;
+        p {
+            margin-top: 40%;
+        }
+    }
+    
+}
+// 因为需要处理页面卷动的逻辑，但是目前网页高度并没有空间进行卷动
+.loaded {
+    height: 5000px;
+}
+body.loaded #loading {
+    opacity: 0;
+}

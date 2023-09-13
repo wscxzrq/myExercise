@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    
+</head>
+<body>
+    <header>
+        <div class="view">
+            <!-- 早上的背景图 -->
+            <img src="https://assets.codepen.io/2002878/bilibili-winter-view-1.jpg"  class="morning" alt="">
+            <!-- 下午的背景图 -->
+            <img src="https://assets.codepen.io/2002878/bilibili-winter-view-2.jpg" class="afternoon" alt="">
+            <!-- 晚上的背景图 使用webm 视频格式，使用原因是里面有个火炉在闪闪发光 -->
+            <video autoplay loop muted class="evening">
+                <source src="https://assets.codepen.io/2002878/bilibili-winter-view-3.webm" type="video/webm">
+            </video>
+            <!-- 窗框的积雪图片 只有在窗框附近有雪 其它地方为透明 -->
+            <img src="https://assets.codepen.io/2002878/bilibili-winter-view-3-snow.png" class="window-cover" alt="">
+        </div>
+        <div class="tree">
+            <!-- 下雪天树的变化，与背景形成视差的效果 -->
+            <img src="https://assets.codepen.io/2002878/bilibili-winter-tree-1.png" class="morning" alt="">
+            <img src="https://assets.codepen.io/2002878/bilibili-winter-tree-2.png" class="afternoon" alt="">
+            <img src="https://assets.codepen.io/2002878/bilibili-winter-tree-3.png" class="evening" alt="">
+        </div>
+    </header>
+    <!-- <img src="https://assets.codepen.io/2002878/bilibili-winter-view-1.jpg"  alt="">
+    <img src="https://assets.codepen.io/2002878/bilibili-winter-view-2.jpg" alt="">
+    <video autoplay loop muted>
+        <source src="https://assets.codepen.io/2002878/bilibili-winter-view-3.webm" type="video/webm">
+    </video> -->
+    <script src="./index.js"></script>
+</body>
+</html>

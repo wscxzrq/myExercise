@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+}
+header {
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+    --percentage:0.5;
+    .view,.tree {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    img,video {
+        position: absolute;
+        display: block;
+        width: 120%; // 有方便位移的作用
+        height: 100%;
+        object-fit: cover; // 因为上面设置了 图片的宽度为120% 使用 object-fit:cover 图片会按比例放大填满
+    }
+    // 调整图片的前后顺序，当鼠标从左到右移动的时候 会由早上转换为下午，在转换为晚上；
+    // 因为早上晚 的图片class名与树的class名称一致，所以排序设定也会套用到树上。
+    // 早上的图排最前，中午的图排中间，晚上的图在最后 所以只需要调整他们的透明度，就可以达到想要的效果
+    .morning {
+        z-index: 20;
+        opacity: calc(1 - (var(--percentage) - 0.25) / 0.25); // 图片会在 --percentage 为0.25的时逐渐变为透明
+    }
+    .afternoon {
+        z-index: 10;
+        opacity: calc(1 - (var(--percentage) - 0.5) / 0.5); // 图片会在 --percentage 为0.5的时逐渐变为透明
+    }
+    // 处理背景图与前景树的移动视察效果
+    .view {
+        // 此时由于背景与前景的位移数值一样，所以没有视差效果
+        transform: translateX(calc(var(--percentage) * 100px)); // 位移的最大距离是100px 最小距离为0px
+    }
+    .tree {
+        // 此时由于背景与前景的位移数值一样，所以没有视差效果
+        transform: translateX(calc(var(--percentage) * 50px)); // 位移的最大距离是100px 最小距离为0px
+        // 前景要失焦状态 模糊化
+        filter: blur(3px);
+    }
+    .view,.tree.morning.afternoon {
+        transition: .2s all ease-in;
+    }
+    &.moving .view,.tree,.morning,.afternoon {
+        transition: none;
+    }
+    .window-cover {
+        opacity: calc((var(--percentage) - 0.9) / 0.1);
+    }
+}

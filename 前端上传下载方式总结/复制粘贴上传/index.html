@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="uploadArea" contentEditable="true"></div>
+    <script>
+        /**
+         * 可以通过 navigator.clipboard 来获取Clipboard 对象 
+         * 然后通过 navigator.clipboard.read() 获取内容
+         * 对于不兼容 通过e.clipboardData.items 来访问剪切板内容
+        */
+        const IMAGE_MIME_REGEX = /^image\/(jpe?g|gif|png)$/i;
+        const uploadAreaEle = document.querySelector('#uploadArea');
+        // 监听粘贴事件
+        uploadAreaEle.addEventListener('paste', async (e) => {
+            const files = [];
+            if(navigator.clipboard) {                
+                let clipboardItems = await navigator.clipboard.read();
+                for (const clipboardItem of clipboardItems) {
+                    for (const type of clipboardItem.types) {
+                        if(IMAGE_MIME_REGEX.test(type)) {
+                            const blob = await clipboardItem.getType(type);
+                            files.push(blob);
+                        }
+                    }
+                }
+            }else {
+                const items = e.clipboardData.items;
+                for (let i = 0; i < items.length; i++) {
+                    if (IMAGE_MIME_REGEX.test(items[i].type)) {
+                        let file = items[i].getAsFile();
+                        files.push(file);
+                    }
+                }
+            }
+            let fromData = new FormData();
+            files.forEach((file,i) => {
+                formData.append("file" + i, file);
+            })
+            // 进行请求
+            // axios.post(url, formData)
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 如果有构件化工具 可以使用require 来导入  JSZip 对象-->
+    <script src="../Jszip压缩上传文件夹/node_modules/jszip/dist/jszip.js"></script>
+</head>
+<body>
+    <input type="file" id="uploadFile4" accept="image/*" webkitdirectory>
+    <script type="module">
+        async function uploadFile() {
+            const uploadFileEle = document.querySelector('#uploadFile4');
+            // 获取元素
+            const files = uploadFileEle.files;
+            // 获取相对路径
+            let webkitRelativePath = files[0].webkitRelativePath;
+            // 获取文件夹的名字，用做zip包的名字
+            let zipFileName = webkitRelativePath.split('/')[0] + '.zip';
+            let zipFile = await generateZipFile(zipFileName,fileList);
+
+            let formData = new FormData();
+            formData.append('zipfile',zipFile);
+        }
+        // DEFLATE 意思为缩小
+        function generateZipFile(zipName,files,options = {type:'blob',compression:'DEFLATE'}) {
+            return new Promise((resolve,reject) => {
+                // 创建 JSZip对象
+                const zip = new JSZip();
+                // 循环遍历，将文件添加到 JSZip对象中
+                Object.values(files).forEach((file,i) => {
+                    zip.file('file' + i,file);
+                })
+                // 生成 JSZip文件
+                zip.generateAsync(options).then(function(blob) {
+                    zipName = zipName || Date.now() + '.zip';
+                    const zipFile = new File([blob],zipName,{
+                        type:'application/zip',
+                    })
+                    resolve(zipFile);
+                })
+            })
+        }
+    </script>
+</body>
+</html>

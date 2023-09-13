@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="uploadFile1" accept="image/*">
+    <script>
+        const upload = () => {
+            // 选取上传的input元素
+            const uploadFileEle = document.querySelector('#uploadFile1');
+            // 获取文件
+            const files = uploadFileEle.files;
+            let formData = new FormData();
+            formData.append(fielName,files);
+        }
+    </script>
+</body>
+</html>

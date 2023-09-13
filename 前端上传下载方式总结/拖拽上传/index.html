@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        let div = document.querySelector('div');
+        div.addEventListener('dragover',(e) => {
+            e.target.style.border = '1px solid blue';
+            e.preventDefault();
+        })
+        div.addEventListener('dragleave',(e) => {
+            e.target.style.border = 'none';
+        })
+        div.addEventListener('drop',(e) => {
+            console.log(e.dataTransfer.files[0]);
+            let files = e.dataTransfer.files;
+            let formData = new FormData();
+            Object.values(files).forEach((file,i) => {
+                formData.append('file' + i,file);
+            })
+            // 进行请求
+            // axios.post(url, formData)
+            // 如果不阻止默认行为，拖拽文件完成后 pptx 文件会直接下载，图片文件会新页面预览
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>

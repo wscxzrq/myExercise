@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Jszip压缩下载/node_modules/jszip/dist/jszip.js"></script>
+</head>
+<body>
+    <script type="module">
+        import { _global } from './FileSaver.js'
+        const blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+        // 下载file 数据源
+        const file = new File(['Hello,world'],{type:'text/llain;charset=utf-8'});
+        var zip = new JSZip();
+        console.log('zip',zip);
+        // 把文件添加到前面创建的 JSZip 对象中，可以添加多个
+        zip.file("Hello.txt", "Hello World\n");
+        // 添加第二个文件，文件是blob对象
+        zip.file("Hello2.txt", blob);
+        // 添加第二个文件，文件是file对象
+        zip.file("Hello3.txt", file);
+        zip.generateAsync({type:'blob'}).then(function(content) {
+            _global.saveAs(content,'example.zip')
+        })
+    </script>
+</body>
+</html>

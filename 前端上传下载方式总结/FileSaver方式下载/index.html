@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="my-canvas"></canvas>
+    <script type="module">
+        import { _global } from './FileSaver.js'
+        // 对blob数据源进行下载
+        const blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+        _global.saveAs(blob, "helloworld.txt");
+        // 下载canvas视图
+        const canvas = document.getElementById("my-canvas");
+        canvas.toBlob(function(blob) {
+            _global.saveAs(blob, "prettyimage.png");
+        });
+        // 下载file 数据源
+        const file = new File(['Hello,world'],{type:'text/llain;charset=utf-8'});
+        _global.saveAs(file,'hellowworld.txt');
+        // 下载网络连接数据源
+        _global.saveAs('https://httpbin.org/image','image.jpg');
+    </script>
+</body>
+</html>

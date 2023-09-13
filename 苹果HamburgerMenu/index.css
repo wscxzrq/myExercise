@@ -1,0 +1,79 @@
+/* .box {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+} */
+/* id为toggler 的 单选或复选框选中的 伪类 */
+/* + 为相邻兄弟选择器 */
+/* #toggler:checked + label .box{
+    background-color: cyan;
+    
+} */
+#toggler {
+    display: none;
+}
+.hamburger-container {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top:16px;
+}
+.hamburger-container span {
+    display: block;
+    height: 1px;
+    background-color: #fff;
+    position: relative;
+    transition: transform .3s ease-in-out, top .3s ease-in-out .3s;
+    top: 0;
+}
+.hamburger-container span:nth-child(2) {
+    margin-top: 7px;
+}
+#toggler:checked + label .hamburger-container span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 4px;
+    /* 延迟0.3秒的意思是等top 执行完在执行 */
+    transition: top .3s ease-in-out, transform .3s ease-in-out .3s;
+}
+#toggler:checked + label .hamburger-container span:nth-child(2) {
+    transform: rotate(-45deg);
+    top: -4px;
+    transition: top .3s ease-in-out, transform .3s ease-in-out .3s;
+}
+header {
+    background-color: #000;
+    height: 44px;
+    padding: 0 18px;
+}
+body {
+    padding: 0;
+    margin: 0;
+}
+/* 选单部分css */
+.nav-items {
+    background-color: rgba(0,0,0,.82);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    /* 垂直方向缩小到0 */
+    transform: scaleY(0); 
+    /* 此时transform 的展开与收起是在中间部分 */
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out .3s;
+    /* 将中心点移向最顶端的中间 */
+    transform-origin: 50% 0;
+    opacity: 0;
+}
+#toggler:checked ~ .nav-items {
+    /* 为1时恢复为原来的高度 */
+    transform: scaleY(1);
+    opacity: 1;
+}
+ul {
+    margin-top: 1em;
+}
+ul li {
+    color: #fff;
+}
