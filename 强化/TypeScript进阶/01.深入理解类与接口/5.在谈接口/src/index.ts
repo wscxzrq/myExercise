@@ -1,5 +1,5 @@
 import { Animal, Dog, Lion, Monkey, Tiger } from "./animals";
-import { IFireShow } from "./interfaces";
+import { IFireShow, IWisdomShow, hasFireShow, hasWisdomShow } from "./interfaces";
 
 const anmials:Animal[] = [
     new Lion('王富贵',12),
@@ -12,12 +12,7 @@ const anmials:Animal[] = [
 // 1.所有动物打招呼
 anmials.forEach(item => item.sayHello())
 
-// 判断一个对象是否拥有某种能力 类型保护函数
-function hasFireShow(ani:object):ani is IFireShow {
-    if((ani as unknown as IFireShow).singleFire && (ani as unknown as IFireShow).doubleFire) {
-        return true
-    }else return false
-}
+
 
 // 2.所有会进行火圈表演的动物进行火圈表演
 anmials.forEach(item => {
@@ -27,3 +22,36 @@ anmials.forEach(item => {
     }
 
 })
+
+
+anmials.forEach(item => {
+    if(hasWisdomShow(item)) {
+        item.suanshuti()
+        item.dance()
+    }
+})
+
+class A {
+    a1:string = ''
+    a2:string = ''
+    a3:string = ''
+}
+
+class B {
+    b1:number = 0
+    b2:number = 0
+    b3:number = 0
+}
+
+// 接口继承类，并且可以实现多继承，
+interface C extends A,B{}
+
+// 变量c被接口C所约束，变量c中必须要拥有接口C规定的所有成员
+const c:C = {
+    a1: "",
+    a2: "",
+    a3: "",
+    b1: 0,
+    b2: 0,
+    b3: 0
+}

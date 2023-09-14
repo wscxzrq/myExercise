@@ -5,17 +5,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch src -e ts --exec ts-node src/index.ts",
-    "build":"rd /s /q dist & tsc",
+    "build": "rd /s /q dist & tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.5.6"
+    "@types/node": "^20.5.6",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
-    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
 }
