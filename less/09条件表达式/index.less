@@ -1,0 +1,56 @@
+/* when是关键字 lightness函数是取得颜色值的亮度 返回值是百分比0-100 */
+// .mixin(@a) when(lightness(@a) >= 50%) { // 255 / 2 = 127.5
+//     background-color: black;
+// }
+// .mixin(@a) when(lightness(@a) < 50%) {
+//     background-color: white;
+// }
+// .mixin(@a) {
+//     color:@a
+// }
+// .class1 {
+//     .mixin(#7e7e7e) // 7e7e7e = 126 black white
+// }
+// .class2 {
+//     .mixin(#808080) // #808080 = 128 black
+// }
+
+// // 如果是颜色值
+// .mixin(@a) when(iscolor(@a)) { // 255 / 2 = 127.5
+//     background-color: black;
+// }
+// // 如果是数字
+// .mixin(@a) when(isnumber(@a)) {
+//     background-color: white;
+//     shuzi:shuzi
+// }
+// .mixin(@a) {
+//     color:@a
+// }
+// .class1 {
+//     .mixin(#7e7e7e) // 7e7e7e = 126 black white
+// }
+// .class2 {
+//     .mixin(123) // #808080 = 128 black
+// }
+
+
+// 如果是像素
+.mixin(@a) when(ispixel(@a)) { // 255 / 2 = 127.5
+    background-color: black;
+    width: @a;
+}
+// 如果是百分比
+.mixin(@a) when(ispercentage(@a)) {
+    background-color: white;
+    width: @a;
+}
+.mixin(@a) {
+    color:@a
+}
+.class1 {
+    .mixin(960px) // 7e7e7e = 126 black white
+}
+.class2 {
+    .mixin(95%) // #808080 = 128 black
+}

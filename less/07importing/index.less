@@ -1,0 +1,18 @@
+/* 可以引入一个或多个less 变量，被引入的less文件中的所有变量都可以在当前的less中使用 */
+// @import 'main';
+
+/* reference: 如果不加入，会把main.less 中所有东西编译到当前less 中，使用了可以做到按需导入 */
+/* inline 将被引入less 原样输出到当前less中 但是不能进行后续操作 */
+/* once 默认值，会将被引入less 的所有信息输出并进行加工 */
+/* less 将被引入文件的扩展名修改为less 这样就可以直接引入css文件而不会引起编译报错 */
+/* css 将被引入文件的扩展名修改为css  */
+/* multiple 允许引入多次相同文件名的文件 */
+@import (reference)  "./main.less";
+@import (less) './test.css';
+.centen {
+    width: @wp;
+    // 不可以对css文件进行引入 会被原样输出到编译后的css文件中
+    .color;
+
+    .colorsss;
+}

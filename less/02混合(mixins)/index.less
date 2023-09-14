@@ -1,0 +1,148 @@
+
+/* 1、基本混合，如果.font_hn 不带有小括号 .font_hn 会被编译到css文件里，带有小括号则不会被编译到css里*/
+.font_hn() {
+    color: red;
+    font-family: microsoft yahei, '黑体',Arial, Helvetica, sans-serif;
+}
+h1 {
+    font-size: 18px;
+    // color: red;
+    .font_hn();
+    .my-hover-mixin();
+}
+h2 {
+    font-size: 16px;
+    // color: red;
+    .font_hn
+}
+
+/* 2、带有选择器的混合 */
+.my-hover-mixin() {
+    // &代表它所有的父级
+    &:hover {
+        border: 1px solid red;
+    }
+}
+//  &:hover == .my-hover-mixin:hover
+button {
+    .my-hover-mixin();
+}
+a {
+    .my-hover-mixin();
+}
+
+/* 3、带参数的混合 */
+.border(@color) {
+    border: 1px solid @color;
+}
+h1 {
+    &:hover {
+        .border(green);
+    }
+}
+h2 {
+    &:hover {
+        .border(red);
+    }
+}
+
+/* 4、带有参数并且有默认值的混合 */
+.border_you (@color:yellow) {
+    border:  1px solid @color;
+}
+h1 {
+    &:hover {
+        .border_you()
+    }
+}
+
+/* 5、带有多个参数的混合 */
+// 如果传参的括号里面都是以逗号分割，那么会依次传给个个参数值，
+// 如果有分号，会把分号之前的看作是一个整体
+.mixin(@color;@padding:xxx;@margin:2) {
+    color-3:@color;
+    padding-3:@padding;
+    margin: @margin @margin @margin @margin;
+}
+.div {
+    .mixin(1,2,3;something,ele);
+}
+.div1 {
+    .mixin(1,2,3);
+}
+.div2 {
+    .mixin(1; 2; 3);
+}
+
+
+/* 6、定义多个具有相同名称和参数数量的混合 */
+// 因为没有传入padding 所以第三个mixin2 并不会执行，如果给定padding默认值 第三个mixin2也会执行 
+.mixin2(@color) {
+    color-1:@color;
+}
+.mixin2(@color;@padding:2) {
+    color-2:@color;
+    padding-2:@padding;
+}
+.mixin2(@color;@padding;@margin:2) {
+    color-3:@color;
+    padding-3:@padding;
+    margin:@margin @margin @margin @margin;
+}
+.some .selector div {
+    .mixin2(#008000)
+}
+
+/* 7、命名参数 */
+// 如果传入实参 给定key 与 val 那么可以打乱顺序传入
+.mixin3(@color:black;@margin:10px;@padding:20px) {
+    color: @color;
+    margin: @margin;
+    padding: @padding;
+}
+.class1 {
+    .mixin3(@margin:20px;@color:#33acfe);
+}
+.class12 {
+    .mixin3(#efca44,@padding:40)
+}
+
+/* 8、@arguments */
+.borderArguments(@x:solid,@c:red) {
+    border: 21px @arguments;
+}
+.div1 {
+    .borderArguments()
+}
+
+/* 9、传值时定义一个字符，在使用时传入那个字符，就会调用该字符对应的规则 */
+.border(all,@w:5px) {
+    border-radius: @w;
+}
+.border(t_l,@w:5px) {
+    border-top-left-radius: @w;
+}
+.border(t_r,@5px) {
+    border-top-right-radius: @w;
+}
+.border(b-l,@w:5px) {
+    border-bottom-left-radius: @w;
+}
+.border(b-r,@w5px) {
+    border-bottom-right-radius: @w;
+}
+footer {
+    .border(t_l,10px);
+    background:red;
+}
+
+/* 10、混合中的返回值 */
+.average(@x,@y) {
+    @average:((@x + @y)/2);
+    @sum:((@x + @y));
+}
+div {
+    .average(16px,50px);
+    padding: @average;
+    margin:@sum;
+}

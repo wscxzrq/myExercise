@@ -1,0 +1,35 @@
+// 变量无需先定义后使用支持延迟加载
+@green:green;
+@baise:white;
+
+header,footer {
+    background-color: @green;
+    h1 {
+        color: @baise;
+    }
+}
+
+// 作为选择器和属性名的变量
+@kuandu:width;
+.@{kuandu} { 
+    @{kuandu}:150px;
+}
+
+// 作为URL的变量
+@imgurl:'https://wwww.baidu.com/img/';
+header {
+    height: 500px;
+    background: @green url('@{imgurl}bdlogo.png');
+}
+
+// 定义多个相同名称的变量时 只会在自己的{}中找
+@var:0;
+.class {
+    @var:1;
+    .brass{
+        @var:2;
+        three:@var; // 这时的值是3
+        @var:3;
+    }
+    one:@var; // 这时的值是1
+}

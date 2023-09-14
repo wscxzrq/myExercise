@@ -1,0 +1,11 @@
+/* when是关键字 lightness函数是取得颜色值的亮度 返回值是百分比0-100 */
+.class1 {
+  background-color: black;
+  width: 960px;
+  color: 960px;
+}
+.class2 {
+  background-color: white;
+  width: 95%;
+  color: 95%;
+}

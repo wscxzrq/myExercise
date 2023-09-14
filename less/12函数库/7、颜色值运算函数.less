@@ -1,0 +1,67 @@
+body {
+    c:hsl(90,80%,50%);
+    c:saturate(hsl(90,80%,50%),20%);
+}
+div {
+    width: 90px;
+    height: 50px;
+    font-size: 16px;
+    text-align: center;
+}
+.ys1 {
+    background-color: hsl(90,80%,50%);
+}
+/* 1、增加一定数值的颜色饱和度 */ 
+.ys2 {
+    background-color: saturate(hsl(90,80%,50%),20%);
+}
+/* 2、降低一定数值的颜色饱和度 */
+.ys3 {
+    background-color: desaturate(hsl(90,80%,50%),20%);
+} 
+/* 3、增加一定数值的颜色亮度 */
+.ys4 {
+    background-color: lighten(hsl(90,80%,50%),20%);
+} 
+/* 4、降低一定数值的颜色亮度 */
+.ys5 {
+    background-color: darken(hsl(90,80%,50%),20%);
+} 
+/* 5、增加一定的颜色透明度 使其更加不透明 */
+.ys6 {
+    background-color: fadein(hsla(90,80%,50%,.5),10);
+} 
+/* 6、减少一定的颜色透明度 使其更加透明 */
+.ys7 {
+    background-color: fadeout(hsla(90,80%,50%,.5),10);
+} 
+/* 7、给颜色（包括不透明的颜色）设定一定数值的透明度 */
+.ys8 {
+    background-color: fade(hsl(90,80%,50%),40%);
+} 
+/* 8、任意方向旋转颜色的色相角度 360度 与 720 度的颜色相同 */ 
+.ys9 {
+    background-color: spin(hsl(10,90%,50%),30);
+}
+/* 9、根据比例混合两种颜色 包括计算不透明度 */ 
+.ys10 {
+    background-color: rgba(100,50,20.5);
+}
+.ys11 {
+    background-color: rgba(0,150,120,.2);
+}
+.ys12 {
+    background-color: mix(rgba(100,50,20,.5),rgba(0,150,120,.2));
+}
+/* 10、完全移除颜色饱和度，与desaturate(@color,100%) 函数效果相同 也就是将颜色调整为灰度 */ 
+.ys13 {
+    background-color: greyscale(hsl(90,80%,50%));
+}
+/* 11、选择两种颜色相比较，得出哪种颜色的对比度最大就倾向于对比度大的颜色 */
+.ys14 {
+    background-color: hsl(90,100%,50%);
+} 
+.ys15 {
+    background-color: contrast(hsl(90,100%,50%),#000000,#ffffff,100%);
+}
+/* 12、 */ 

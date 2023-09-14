@@ -1,0 +1,31 @@
+div {
+    // hsl(90,100%,50%);
+    /* 1、hue 从hsl中提取色相值 */ 
+    z-index: hue(hsl(90,100%,50%));
+    /* 2、saturation 从hsl中提取饱和度 */
+    z-index: saturation(hsl(90,100%,50%)); 
+    /* 3、lightness 从hsl中提取亮度值 */
+    z-index: lightness(hsl(90,100%,50%)); 
+
+
+    /* 4、 hsvhue 从hsv色彩空间中提取色相*/ 
+    z-index: hsvhue(hsv(90,100%,50%));
+    /* 5、 hsvsaturation 从hsv色彩空间提取饱和度*/ 
+    z-index: hsvsaturation(hsv(90,100%,50%));
+    /* 6、 从hsv色彩空间提取色调*/ 
+    z-index: hsvvalue(hsv(90,100%,50%));
+
+
+    /* 7、red 从rgba中提取红色 */ 
+    z-index: red(rgba(29,199,159,.8));
+    /* 8、green 从rgba中提取绿色 */ 
+    z-index: green(rgba(29,199,150,.8));
+    /* 9、blue 从rgba中提取蓝色*/
+    z-index: blue(rgba(29,199,150,.8)); 
+    /* 10、alpha 从rgba中提取透明度*/ 
+    z-index: alpha(rgba(29,199,150,.8));
+    /* 11、luma 计算颜色对象luma的值（亮度的百分比表示法）*/
+    z-index: luma(rgb(100,200,30)); 
+    /* 12、计算没有伽马校正的亮度值*/ 
+    z-index: luminance(rgb(100,200,30));
+}

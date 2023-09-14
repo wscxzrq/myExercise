@@ -1,0 +1,40 @@
+#bgcolor() {
+    background: #fff;
+    .a {
+        color: #888888;
+        &:hover {
+            color: #ff6600;
+        }
+        .b {
+            background-color: #ff0000;
+        }
+    }
+    
+}
+.wi {
+    background: green;
+    color: '#fff';
+    .a {
+        color: green;
+        background: #ffff;
+    }
+}
+.bgcolor1 {
+    background-color: #fdfee0;
+    // 命名空间，获取到bgcolor混合中的.a 但是会获取到.b
+    #bgcolor > .a;
+}
+.bgcolor2 {
+    // 这样不会获取到.b
+    // #bgcolor>.a>.b;
+    .wi > .a
+}
+
+/* 省略>写法 */
+.bgcolor1 {
+    background-color: #fdfee0;
+    #bgcolor .a
+}
+.bgcolor2 {
+    #bgcolor .a .b
+}

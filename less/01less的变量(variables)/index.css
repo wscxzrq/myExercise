@@ -1,0 +1,21 @@
+header,
+footer {
+  background-color: green;
+}
+header h1,
+footer h1 {
+  color: white;
+}
+.width {
+  width: 150px;
+}
+header {
+  height: 500px;
+  background: green url('https://wwww.baidu.com/img/bdlogo.png');
+}
+.class {
+  one: 1;
+}
+.class .brass {
+  three: 3;
+}

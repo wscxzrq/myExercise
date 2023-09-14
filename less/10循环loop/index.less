@@ -1,0 +1,19 @@
+// .loop(@counter) when (@counter > 0) {
+//     .loop((@counter - 1)); // 递归调用自身
+//     width: (10px * @counter);
+// }
+// div {
+//     .loop(5)
+// }
+
+.loop(@counter) when (@counter > 0) {
+    .h@{counter} {
+        padding: (10px * @counter);
+    }
+    .loop((@counter - 1))
+}
+div {
+    .loop(6)
+}
+    
+    

@@ -1,0 +1,16 @@
+/* 1、普通的运算*/
+.wp {
+  background-color: forestgreen;
+  width: 900px;
+  height: 800px;
+}
+/* 2、具有优先级的运算*/
+.wp {
+  background-color: forestgreen;
+  width: 900px;
+  height: 800px;
+}
+/* 3、颜色值转换*/
+.wp {
+  background-color: #151515;
+}

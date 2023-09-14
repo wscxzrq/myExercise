@@ -1,0 +1,13 @@
+@clolor:#ffffff;
+/* less 中会优先选择自身作用域内的变量，如果自身作用域内不存在则选择
+    parent作用域内的，如果parent作用域内也不存在 那么会去全局作用域中
+    查找，less中的变量可以先使用后定义
+*/
+.bgcolor {
+    width: 50px;
+    a {
+        @clolor:green;
+        color: @clolor;
+    }
+    @clolor:#ff0000
+}

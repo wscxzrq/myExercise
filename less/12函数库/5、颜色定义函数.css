@@ -1,0 +1,30 @@
+/* 1、rgb 函数通过十进制 红 绿 蓝 三种颜色值 创建不透明颜色对象 */
+div {
+  background-color: #ff0000;
+}
+/* 2、rbga 通过十进制 红 绿 蓝 以及 alpha 四种值（RGBA）创建带alpha透明的颜色对象 */
+div {
+  background-color: rgba(255, 0, 0, 0.5);
+  background-color: rgba(0, 255, 0, 0.5);
+}
+/* 3、argb 创建格式为 #AARRGGBB 的十六进制（hex representation）颜色 */
+div {
+  background-color: #80ff0000;
+  background-color: #8000ff00;
+}
+/* 4、hls 通过色相（hue）,饱和度（saturation），亮度（lightness）三种值（HLS）创建不透明颜色对象 */
+div {
+  background-color: hsl(90, 100%, 50%);
+}
+/* 5、hsla 通过色相（hue）, 饱和度（saturation）, 亮度（lightness）, 以及 alpha四种值（HSLA）创建透明的颜色对象 */
+div {
+  background-color: hsla(90, 100%, 50%, 0.5);
+}
+/* 6、通过色相（hue）, 饱和度（saturation）, 色调（value）三种值（HSV）创建不透明的颜色对象 */
+div {
+  background-color: #408000;
+}
+/* 7、通过色相（hue）, 饱和度（saturation）, 色调（value）, 以及alpha 四种值（HSVA）创建透明颜色对象 */
+div {
+  background-color: rgba(64, 128, 0, 0.5);
+}

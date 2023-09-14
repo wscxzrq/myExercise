@@ -1,0 +1,49 @@
+div {
+  width: 90px;
+  height: 50px;
+  font-size: 16px;
+  text-align: center;
+}
+/* 1、与multiply 分别将两种颜色的红绿蓝（RGB）三种值做乘法运算，然后再除以255，输出结果是更深的颜色， 相当于ps中的正片叠底/正片叠底*/
+/* 2、screen 与multiply 效果相反，输出结果是更亮的颜色，相当于ps 中的变亮/滤色*/
+/* 3、
+    overlay 结合multiply 与 screen 效果，令浅的颜色变的更浅，深的颜色变得更深，相当于ps 中的
+    叠加，输出结果由第一个颜色的参数决定
+*/
+/* 4、softlight 与overlay 函数效果类似，当纯黑色和纯白色作为参数时输出的结果不会是纯黑色或纯白色 相当于ps 中的柔光*/
+/* 
+    5、hardlight 与overlay 函数效果相似，不过由第二个颜色参数决定输出颜色的亮度或黑度，而不是第一个参数决定
+        对应ps中的强光，亮光，线性光，点光
+*/
+/* 6、difference 从第一个颜色值中减去第二个（分别计算RGB 三种颜色值）输出结果是更深的颜色 对应ps 中的 差值/排除*/
+/* 7、exclusion 效果与difference 函数效果类似，只是输出结果差别更小 对应ps 中的差值/排除*/
+/* 8、average 对RGB 的三种颜色值取平均值，然后输出结果*/
+/* 9、negation 与difference 函数效果相反，输出结果是更亮的颜色，效果相反不代表做加法运算*/
+.ys1 {
+  background-color: #ff6600;
+}
+.ys2 {
+  background-color: #000000;
+}
+.ys3 {
+  background-color: #ff6600;
+}
+.ys4 {
+  background-color: #ff6600;
+}
+.ys5 {
+  background-color: #333;
+}
+.ys6 {
+  background-color: #cc9933;
+}
+.ys7 {
+  background-color: #ff6600;
+}
+.ys8 {
+  background-color: #fff;
+}
+.ys9 {
+  background-color: #0099ff;
+}
+/* 10、*/

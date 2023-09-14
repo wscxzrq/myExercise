@@ -1,0 +1,49 @@
+/* 1、color函数 将字符串颜色的值转换为具体的颜色值*/
+body {
+  background-color: #f60;
+}
+/* 2、convert函数 将数字的单位从一种单位转换到另一种单位 */
+.convert {
+  width: 755.90551181px;
+  height: 1000ms;
+  /* rad:弧度 deg:度 grad:梯度 turn:圆 */
+  rotate: 572.95779513deg;
+}
+/* 
+    3、data-uri() 
+    将一个资源内嵌到样式文件，如果开启了ieCompat选项，而且资源文件的体积过大，或者是在
+    浏览器中使用，则会使用url()进行回退，如果没有指定MIME，则node.js会使用MIME包
+    来决定正确的MIME easyLess不支持
+*/
+.data_url {
+  background: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ffile02.16sucai.com%2Fd%2Ffile%2F2014%2F0829%2Fb871e1addf5f8e96f3b390ece2b2da0d.jpg&refer=http%3A%2F%2Ffile02.16sucai.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1640410728&t=61f12b38db1817fd4964d34a98bf999c');
+}
+/* 
+    4、default() 只能在边界条件中使用，没有匹配到其它自定义函数(mixin) 的时候返回
+    true,否则返回false
+*/
+.default1 {
+  x: 11;
+}
+.default2 {
+  z: 13;
+}
+/* 在至少除自身一条数据以外 自定义函数的条件满足 才会被调用到 */
+.div1 {
+  width: 100px;
+}
+.div2 {
+  padding: 10cm;
+}
+/* 
+    5、 unit() 替换单位函数
+*/
+.color {
+  width: 100cm;
+}
+.color {
+  width: 100px;
+}
+.color {
+  width: 100;
+}

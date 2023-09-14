@@ -1,0 +1,36 @@
+.wi {
+  background: green;
+  color: '#fff';
+}
+.wi .a {
+  color: green;
+  background: #ffff;
+}
+.bgcolor1 {
+  background-color: #fdfee0;
+  color: #888888;
+}
+.bgcolor1:hover {
+  color: #ff6600;
+}
+.bgcolor1 .b {
+  background-color: #ff0000;
+}
+.bgcolor2 {
+  color: green;
+  background: #ffff;
+}
+/* 省略>写法 */
+.bgcolor1 {
+  background-color: #fdfee0;
+  color: #888888;
+}
+.bgcolor1:hover {
+  color: #ff6600;
+}
+.bgcolor1 .b {
+  background-color: #ff0000;
+}
+.bgcolor2 {
+  background-color: #ff0000;
+}

@@ -1,0 +1,79 @@
+/* 1、基本混合，如果.font_hn 不带有小括号 .font_hn 会被编译到css文件里，带有小括号则不会被编译到css里*/
+h1 {
+  font-size: 18px;
+  color: red;
+  font-family: microsoft yahei, '黑体', Arial, Helvetica, sans-serif;
+}
+h1:hover {
+  border: 1px solid red;
+}
+h2 {
+  font-size: 16px;
+  color: red;
+  font-family: microsoft yahei, '黑体', Arial, Helvetica, sans-serif;
+}
+/* 2、带有选择器的混合 */
+button:hover {
+  border: 1px solid red;
+}
+a:hover {
+  border: 1px solid red;
+}
+/* 3、带参数的混合 */
+h1:hover {
+  border: 1px solid green;
+}
+h2:hover {
+  border: 1px solid red;
+}
+/* 4、带有参数并且有默认值的混合 */
+h1:hover {
+  border: 1px solid yellow;
+}
+/* 5、带有多个参数的混合 */
+.div {
+  color-3: 1, 2, 3;
+  padding-3: something, ele;
+  margin: 2 2 2 2;
+}
+.div1 {
+  color-3: 1;
+  padding-3: 2;
+  margin: 3 3 3 3;
+}
+.div2 {
+  color-3: 1;
+  padding-3: 2;
+  margin: 3 3 3 3;
+}
+/* 6、定义多个具有相同名称和参数数量的混合 */
+.some .selector div {
+  color-1: #008000;
+  color-2: #008000;
+  padding-2: 2;
+}
+/* 7、命名参数 */
+.class1 {
+  color: #33acfe;
+  margin: 20px;
+  padding: 20px;
+}
+.class12 {
+  color: #efca44;
+  margin: 10px;
+  padding: 40;
+}
+/* 8、@arguments */
+.div1 {
+  border: 21px solid red;
+}
+/* 9、传值时定义一个字符，在使用时传入那个字符，就会调用该字符对应的规则 */
+footer {
+  border-top-left-radius: 10px;
+  background: red;
+}
+/* 10、混合中的返回值 */
+div {
+  padding: 33px;
+  margin: 66px;
+}

@@ -1,0 +1,47 @@
+/* 1、判断是否是数字 */
+.m(@x) when(isnumber(@x)) {
+    x:@x;
+}
+/* 2、是否是字符串*/
+.s(@x) when(isstring(@x)) {
+    x:@x;
+} 
+/* 3、是否是颜色值 */
+.c(@x) when (iscolor(@x)) {
+    x:@x;
+}
+/* 4、是否是关键字 */ 
+.k(@x) when (iskeyword(@x)) {
+    x:@x;
+}
+/* 5、是否是URL*/
+.u(@x) when (isurl(@x)) {
+    x:@x;
+} 
+/* 6、是否是像素*/ 
+.p(@x) when (ispixel(@x)) {
+    x:@x;
+}
+/* 7、是否是em单位 */
+.e(@x) when (isem(@x)) {
+    x:@x;
+} 
+/* 8、判断是否是百分比 */
+.i(@x) when (ispercentage(@x)) {
+    x:@x;
+} 
+/* 9、判断一个值是否是带单位的数字 第一个参数是值，第二个参数是指定单位 */
+.d(@x) when (isunit(@x,px)) {
+    x:@x;
+}
+div {
+    .m(123);
+    .s('123');
+    .c(red);
+    .k(auto);
+    .u(url(arr.jpg));
+    .p(100px);
+    .e(100em);
+    .i(10%;);
+    .d(10px)
+}

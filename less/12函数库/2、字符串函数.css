@@ -1,0 +1,33 @@
+/* escape 字符串转意 */
+div {
+  d: %23,%5E,%28,%29,%EF%BD%9C,%3A,%3E,%3C,%3B,%5B,%5D,%3D;
+}
+/* e()避免编译 可以用在如果需要浏览器运算，不需要less运算时，可以用e() 避免被less编译*/
+div {
+  filter: ms:alwaysHasItsOwnSyntax.For,Stuff();
+  filter1: ms:alwaysHasItsOwnSyntax.For,Stuff();
+  width: calc(960px - 100px);
+}
+/* 格式化字符串 */
+a {
+  font-family: "%a %a, 'Microsoft', YaHei";
+}
+b {
+  font-family: "%A %a, 'microsoft', YaHei";
+}
+c { 
+  font-family: "%s %s,#f6o,'YaHei' ";
+}
+/* replace () 字符串替换函数 字符串，需要替换的值，要替换成的值 */
+d {
+  content: 'Hello,Less';
+}
+/* length() 返回值的个数 */
+f {
+  n: 3;
+}
+/* extract() 返回集合中指定索引的值 */
+g {
+  n: 4;
+  m: "banana";
+}
