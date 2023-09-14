@@ -1,0 +1,67 @@
+div {
+    min-height: 20px;
+    border: 2px solid #333;
+    margin: 4px;
+    background-color: #fff;
+}
+a {
+    display: block;
+    font-size: 32px;
+    padding: 8px;
+}
+/* 1、代表container 这个class 只能作用于div元素上 */
+/* div.container {
+    background-color: yellow;
+} */
+
+/* 2、空格  只作用于container这个class 下的所有div 不包含container本身*/
+/* .container div {
+    background: yellow;
+} */
+
+/* 3、> 选择拥有container 这个class 下面第一层的div */
+/* .container > div {
+    background-color: yellow;
+} */
+
+/* 4、 + 选择拥有container这个class的div 与他身处同一层的div 如果有其它元素间隔 则无法选中 */
+/* .container +  div {
+    background-color: yellow;
+} */
+
+/* 5、 ~ 选择拥有container这个class的元素 与他深处同一层的所有div 无视其他元素间隔*/
+/* .container ~ div {
+    background-color: yellow;
+} */
+
+/* 6、* 选择拥有container这个class元素 之后的所有标签*/
+/* .container ~ * {
+    background: yellow;
+} */
+
+/* 7、 attribute 选择器 可以通过HTML元素上的属性进行选取 */
+/* 选择所有拥有title的标签 */
+a[title] {
+    color: red;
+}
+/* 搜索href属性为htts://www.google.com的超链接 */
+a[href='htts://www.google.com'] {
+    color: red;
+}
+/* 选择href以https开头的标签 */
+a[href^='https'] {
+    color: yellow;
+}
+/* 选择href以com结尾的标签 */
+a[href$='com'] {
+    color: green;
+}
+/* 关键字搜索 */
+a[href*='facebook'] {
+    color: pink;
+}
+
+/* 8、 pseudo class 伪类选择器 用来选择普通selecter无法表达的信息*/
+.container div:nth-child(2) {
+    background-color: red;
+}
