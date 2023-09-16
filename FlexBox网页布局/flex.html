@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container {
+            width: 500px;
+            display: flex;
+            background-color: #044BD9;
+            height: 300px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 
+            flex 是 flex-grow + flex-shrink + flex-basis 组合的缩写
+                1、flex:1 1 auto 意思是flex item 会按照flex container 的宽度平均分配空间去扩大或缩小
+                    flex container 有剩余空间则同步扩大， 没有足够空间则同步缩小
+                2、flex:0 1 150px 每一个flex item 的宽度最多是 150px 只会因为flex container 空间不足时缩小
+                    而不会因为 flex container 有剩余空间的时候扩大
+                3、flex: 0 0 200px 固定每个flex item 的宽度是 200px 不会扩大也不会缩小
+        */
+        .box {
+            width: 90px;
+            height: 60px;
+            flex:1 1 auto;
+            background-color: #eee;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 4px;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, .18);
+            font-size: 2em;
+        }
+        .A {
+            background-color: #6DD9FB;
+        }
+        .B {
+            background-color: #50A18E;
+        }
+        .C {
+            background-color: #F2D680;
+        }
+        .D {
+            background-color: #F2916D;
+        }
+        .E {
+            background-color: #F26E50;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="box A">A</div>
+        <div class="box B">B</div>
+        <div class="box C">C</div>
+    </div>
+</body>
+</html>

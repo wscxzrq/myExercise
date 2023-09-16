@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container {
+            display: flex;
+            background-color: #044BD9;
+            height: 300px;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 
+            flex-basis 设定 flex-item 的主轴方向的大小的 
+            当flex-direction:row 时 相当于设定flex-item 的宽度
+            当flex-direction:column 时 相当于设定flex-item的高度
+            设置flex-basis后 原有的宽度和高度就会失效
+            如果设置为0 则按照元素本身的宽度或高度
+            如果设置为auto 则按照之前设置的 width和height
+        */
+        .box {
+            width: 60px;
+            height: 60px;
+            flex-basis: 100px;
+            background-color: #eee;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 4px;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, .18);
+            font-size: 2em;
+        }
+        .A {
+            background-color: #6DD9FB;
+        }
+        .B {
+            background-color: #50A18E;
+        }
+        .C {
+            background-color: #F2D680;
+        }
+        .D {
+            background-color: #F2916D;
+        }
+        .E {
+            background-color: #F26E50;
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+    <div class="flex-container">
+        <div class="box A">A</div>
+        <div class="box B">B</div>
+        <div class="box C">C</div>
+        <div class="box D">D</div>
+        <div class="box E">E</div>
+    </div>
+</body>
+</html>

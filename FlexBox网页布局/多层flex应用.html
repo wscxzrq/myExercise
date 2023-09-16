@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .post {
+            display: flex;
+            flex-direction: row;
+            padding: 2em;
+            border-bottom: 1px solid #eee;
+        }
+        .post .thumbnail img {
+            border-radius: 100%;
+            display: block;
+            width: 100%;
+            height: auto;
+            min-width: 100px;
+        }
+        .ppst .thumbnail {
+            /* 不会扩大 会缩小 200像素大小 */
+            flex: 0 1 200px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            margin-left: 1.2rem;
+            /* 自动调整大小 */
+            flex: 1 1 auto;
+        }
+        .content h4 {
+            font-weight: bold;
+        }
+        .content .excerpt {
+            font-size: .8em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="post">
+        <div class="thumbnail">
+            <img src="https://placekitten.com/200/200" alt="">
+        </div>
+        <div class="content">
+            <h4 class="title">FlexBox Example</h4>
+            <div class="excerpt">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque eveniet asperiores placeat ipsam, dicta mollitia!
+                Aperiam cupiditate eveniet, quis quam sint iusto delectus minus, pariatur id numquam quasi nesciunt ut.
+            </div>
+        </div>
+    </div>
+    <div class="post">
+        <div class="thumbnail">
+            <img src="https://placekitten.com/200/200" alt="">
+        </div>
+        <div class="content">
+            <h4 class="title">FlexBox Example</h4>
+            <div class="excerpt">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque eveniet asperiores placeat ipsam, dicta mollitia!
+                Aperiam cupiditate eveniet, quis quam sint iusto delectus minus, pariatur id numquam quasi nesciunt ut.
+            </div>
+        </div>
+    </div>
+    <div class="post">
+        <div class="thumbnail">
+            <img src="https://placekitten.com/200/200" alt="">
+        </div>
+        <div class="content">
+            <h4 class="title">FlexBox Example</h4>
+            <div class="excerpt">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque eveniet asperiores placeat ipsam, dicta mollitia!
+                Aperiam cupiditate eveniet, quis quam sint iusto delectus minus, pariatur id numquam quasi nesciunt ut.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

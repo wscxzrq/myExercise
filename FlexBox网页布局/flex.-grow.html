@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container {
+            width: 300px;
+            display: flex;
+            background-color: #044BD9;
+            height: 300px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 
+            flex grow 是指flex container 主轴方向有剩余空间的时候 flex item 沿主轴方向扩大的设定 
+            有几个子元素就占几份， 300 - 60*3 = 120px 如果A B C 每个div 的flex-grow 设置为1 那么每个div的宽度为 60 + 40px
+            写几就是占有剩余空间的几份
+            如果设置为0 就会按照自身原本的大小来渲染
+        */
+        .box {
+            width: 60px;
+            height: 60px;
+            background-color: #eee;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 4px;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, .18);
+            font-size: 2em;
+            flex-grow: 0;
+        }
+        .A {
+            background-color: #6DD9FB;
+        }
+        .B {
+            background-color: #50A18E;
+            flex-grow: 0;
+        }
+        .C {
+            background-color: #F2D680;
+        }
+        .D {
+            background-color: #F2916D;
+        }
+        .E {
+            background-color: #F26E50;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="box A">A</div>
+        <div class="box B">B</div>
+        <div class="box C">C</div>
+    </div>
+</body>
+</html>

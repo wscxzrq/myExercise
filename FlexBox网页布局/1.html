@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container {
+            display: flex;
+            background-color: #044BD9;
+            height: 300px;
+            /* 
+                row 是预设值，是横向的意思 并且横向是主轴 column 是直向的意思 并且纵向是主轴
+                row-reverse 是横向 倒转排序
+                column-reverse 是直向 倒转排序
+
+                justify-content 是设置主轴的排序方向
+                    设置flex-driection:row  且 justify-content:center 时 沿主轴，横向居中对齐
+                    设置 justify-content:flex-start 代表沿起始方向对齐
+                    设置 justify-content:flex-end 代表沿结束方向对齐
+                align-items 是设置交叉轴的排序方向
+                    设置 为center 时 沿侧轴居中对齐
+            */
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            /* 
+                flex-wrap 属性的预设值时nowrap 无论如何都会在同一行 
+                如果修改为wrap 那么超出宽度的box 会移动到下一行
+            */
+            flex-wrap: wrap;
+            /* flex 大于一行时才会生效 用于设定当多于一行 flex itemcodas 时 行与行之间的对齐方式 */
+            align-content: space-around;
+        }
+        .box {
+            width: 120px;
+            height: 120px;
+            background-color: #eee;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 4px;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, .18);
+            font-size: 2em;
+        }
+        .A {
+            background-color: #6DD9FB;
+        }
+        .B {
+            background-color: #50A18E;
+        }
+        .C {
+            background-color: #F2D680;
+        }
+        .D {
+            background-color: #F2916D;
+        }
+        .E {
+            background-color: #F26E50;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="box A">A</div>
+        <div class="box B">B</div>
+        <div class="box C">C</div>
+        <div class="box D">D</div>
+        <div class="box E">E</div>
+        <div class="box A">A</div>
+        <div class="box B">B</div>
+        <div class="box C">C</div>
+        <div class="box D">D</div>
+        <div class="box E">E</div>
+    </div>
+</body>
+</html>

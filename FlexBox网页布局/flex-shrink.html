@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .flex-container {
+                width: 180px;
+                display: flex;
+                background-color: #044BD9;
+                height: 300px;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+            }
+            /* 
+                flex-shrink 是指当 flex item 主轴方向的大小总和超出了 flex container 的时候
+                flex item 沿主轴怎样缩小的设定 预设值是1
+            */
+            .box {
+                width: 90px;
+                height: 90px;
+                background-color: #eee;
+                text-align: center;
+                line-height: 60px;
+                border-radius: 4px;
+                box-shadow: 0px 1px 3px rgba(0, 0, 0, .18);
+                font-size: 2em;
+                flex-shrink: 0;
+            }
+            /* 
+                flex-shrink 分别为 A B C 三个div 设置为1 意思是A B C 三个div 分别承担一份超出的宽度
+                实际超出宽度为 90px 30/3 = 30px 每个div的宽度 全部减少30px
+            */
+            .A {
+                background-color: #6DD9FB;
+                flex-shrink: 1;
+            }
+            .B {
+                background-color: #50A18E;
+                flex-shrink: 1;
+            }
+            .C {
+                background-color: #F2D680;
+                flex-shrink: 1;
+            }
+            .D {
+                background-color: #F2916D;
+            }
+            .E {
+                background-color: #F26E50;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-container">
+            <div class="box A">A</div>
+            <div class="box B">B</div>
+            <div class="box C">C</div>
+        </div>
+    </body>
+</head>
+<body>
+    
+</body>
+</html>
