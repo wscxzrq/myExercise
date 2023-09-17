@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 0:false
+        // 1:true
+        // 给代码中的一个位置添加标签 然后使用continue 跳到这个位置
+        houdunren: for (let i = 1; i <= 10; i++) {
+            if (i % 2) continue houdunren;
+            console.log(i)
+        }
+
+        xj: for (let a = 1; a <= 10; a++) {
+                for (let b = 1; b <= 10; b++) {
+                    if (b % 2 == 0) {
+                        console.log(a, b)
+                    }
+                    if (a + b > 18) {
+                        // 如果需要 a+b 等于18 的时候跳出整个循环 则需要在break后面添加标签，否则只跳出当前循环
+                        break xj
+                    }
+                }
+        }
+    </script>
+</body>
+
+</html>

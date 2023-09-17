@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="password">
+    <input type="text" name="confirm_password">
+    <span name='msg'></span>
+    <script>
+        // 返回一个需要查找的标签
+        function query(name) { 
+            return document.querySelector(`[name='${name}']`);
+         }
+        let inputs = document.querySelectorAll("[name='password'],[name='confirm_password']");
+        // console.log(inputs);
+        [...inputs].map(item => {
+            item.addEventListener('keyup',function() {
+                let msg = ''
+                if(query('password').value != query('confirm_password').value || query('password').value.length<5) {
+                    msg='两次密码不一致,密码长度小于五位'
+                }
+                query('msg').innerHTML = msg
+            })
+        })
+        
+        
+    </script>
+</body>
+</html>

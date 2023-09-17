@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    ul{
+        list-style: none;
+    }
+    li{
+        border: 1px solid #ddd;
+        width: 100px;
+        height: 150px;
+    }
+</style>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        // for in循环
+        let hd = [
+            {title:'第一章走进JavaScript黑洞',lesson:3},
+            {title:'ubuntu19.10配置好用的编程工作站',lesson:4},
+            {title:'媒体查询响应式布局',lesson:5}
+        ]
+        document.write(`
+            <table border='1' width='100%'>
+                <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>课程数量</th>
+                    </tr>
+                </thead>
+        `)
+        for(let key in hd) {
+            document.write(`
+                <tr>
+                    <td>${hd[key].title}</td>
+                    <td>${hd[key].lesson}</td>
+                </tr>
+            `)
+        }
+        document.write(`
+            </table>
+        `)
+
+        // for of
+        document.write(`
+            <table border='1' width='100%'>
+                <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>课程数量</th>
+                    </tr>
+                </thead>
+                    
+                
+        `)
+        // for of 循环 主要处理迭代对象
+        // value 代表值，无需想for in循环一样 通过对象[key].属性的方式
+        for(const value of hd) {
+            console.log(value)
+            document.write(`
+                <tr>
+                    <td>${value.title}</td>
+                    <td>${value.lesson}</td>
+                </tr>
+            `)
+        }
+        document.write(`</table>`)
+        
+        let lis = document.querySelectorAll('li')
+        for(const li of lis) {
+            li.addEventListener('click',function () { 
+                li.style.backgroundColor = 'red'
+             })
+        }
+    </script>
+</body>
+</html>

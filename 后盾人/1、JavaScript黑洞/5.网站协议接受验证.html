@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="https://www.houdunren.com" id="form">
+        用户名：<input type="text" name="user">
+        <hr>
+        <input type="checkbox" name="copyright">接受协议
+        <hr>
+        <button>提交</button>
+    </form>
+
+    <script>
+        function query(el) {
+            return document.querySelector(el);
+        }
+        query('#form').addEventListener('submit', function (event) {
+            let user = query("[name='user']").value.trim();
+            let copyright = query("[name='copyright']").checked;
+            // 如果用户没填 user = true copyright = false
+            // 如果用户填了 user = false copyright = true
+            if (!user || copyright === false) {
+                console.log(!user)
+                console.log(copyright)
+                // 阻止默认事件
+                event.preventDefault();
+                alert('请接受协议并添加用户名');
+            } else {
+                console.log(!user)
+                console.log(copyright)
+                event.preventDefault();
+            }
+            
+        })
+    </script>
+</body>
+
+</html>

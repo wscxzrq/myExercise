@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 通过匿名函数自调用来避免全局变量污染
+        (function () { 
+            var $ = window.$ = {};
+            $.web = 'hdcms';
+            let url = 'hdcms.com';
+            let site = '后盾人';
+            $.getUrl = function () {
+                return url;
+            };
+         }.bind(window)())
+        // 通过块级作用域 来避免全局变量污染
+        {
+            let $ = window.$ = {};
+            $.web = 'hdcms'; 
+            let url = 'hdcms.com';
+            let site = '厚盾人';
+            $.getUrl = function () {
+                return url,site;
+            }
+        }
+        console.log(window)
+        console.log($.web)
+        console.log($.getUrl())
+
+        for(let i = 0;i < 5;i++) {
+            for(let m=5 - i;m>0;m--) {
+                document.write(`<span style='color:white'>*</span>`)
+            }
+            for(let n = 2 * i - 1 ; n>0;n--) {
+                document.write(`<span>*</span>`)
+            }
+            document.write('<br>')
+        }
+    </script>
+</body>
+
+</html>
