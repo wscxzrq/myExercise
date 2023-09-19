@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/jquery": "^3.5.19",
     "clean-webpack-plugin": "^4.0.0",
     "html-webpack-plugin": "^5.5.3",
     "ts-loader": "^9.4.4",
@@ -15,5 +16,8 @@
     "dev": "webpack-dev-server"
   },
   "author": "xujie <18330156357@163.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
 }
