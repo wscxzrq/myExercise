@@ -7,6 +7,12 @@ export class Square {
     // 属性：显示者
     private _viewer?:IViewer
 
+    private _point:Point = {
+        x:0,
+        y:0
+    }
+
+    private _color:string = ''
     public get viewer() {
         return this._viewer
     }
@@ -35,9 +41,9 @@ export class Square {
         return this._color
     }
 
-    public constructor(
-        private _point:Point, 
-        private _color:string
-    ) {}
+    public set color(v) {
+        this._color = v
+    }
+
 }
 

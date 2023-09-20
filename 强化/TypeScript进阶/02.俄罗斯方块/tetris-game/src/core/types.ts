@@ -11,3 +11,9 @@ export interface IViewer {
     show():void, // 显示函数
     remove():void // 不在显示
 }
+
+/**
+ * 形状
+ */
+export type Shape = Point[]
+

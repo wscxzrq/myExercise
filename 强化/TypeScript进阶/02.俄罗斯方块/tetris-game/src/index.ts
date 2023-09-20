@@ -1,35 +1,36 @@
+import { TerisRule } from './core/TerisRule';
 import { Square } from "./core/Square";
+import { SquareGroup } from "./core/SquareGroup";
+import { LShape, createTeris } from "./core/Teris";
 import { SquarePageViewer } from "./core/viewer/SquarePageViewer";
 import $ from 'jquery'
 
-const sq = new Square({x:0,y:0},'red');
+const teris = createTeris({x:3,y:2})
 
-sq.viewer = new SquarePageViewer(sq,$('#root'))
-sq.point = {
-    x:3,
-    y:0
-}
 
-const sq2 = new Square({x:0,y:0},'red');
-sq2.viewer = new SquarePageViewer(sq2,$('#root'))
-sq2.point = {
-    x:4,
-    y:0
-}
-
+teris.squares.forEach(sq => {
+    sq.viewer = new SquarePageViewer(sq,$('#root'))
+})
 
 
 $('#btnDown').click(function () {
-    sq.point = {
-        x:sq.point.x,
-        y:sq.point.y + 1
+    let targetPoint = {
+        x:teris.centerPoint.x,
+        y:teris.centerPoint.y + 1
+    }
+    if(TerisRule.canImove(teris.shape,targetPoint)) {
+        teris.centerPoint = targetPoint
     }
 })
-$('#btnRemove').click(function () {
-    if(sq.viewer) {
-        sq.viewer.remove()
+$('#btnRight').click(function () {
+    teris.centerPoint= {
+        x:teris.centerPoint.x + 1,
+        y:teris.centerPoint.y
     }
 })
-$('#btnAdd').click(function () {
-    sq.viewer = new SquarePageViewer(sq,$('#root'))
+$('#btnLeft').click(function () {
+    teris.centerPoint = {
+        x:teris.centerPoint.x - 1,
+        y:teris.centerPoint.y
+    }
 })

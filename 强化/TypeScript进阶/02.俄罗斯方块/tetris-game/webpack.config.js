@@ -18,7 +18,12 @@ module.exports = {
         rules:[
             {
                 test:/.ts$/,
-                loader:'ts-loader'
+                use:{
+                    loader:'ts-loader',
+                    options:{
+                        transpileOnly:true, // 处理 webpack-dev-server 与 ts-loader 联合使用报错问题
+                    }
+                }
             }
         ]
     },
