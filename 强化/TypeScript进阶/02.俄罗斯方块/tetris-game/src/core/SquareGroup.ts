@@ -7,6 +7,7 @@ import { Point, Shape } from "./types";
 export class SquareGroup {
     private _squares:readonly Square[];
 
+    // 每一个小方块数组
     public get squares() {
         return this._squares
     }

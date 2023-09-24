@@ -6,16 +6,29 @@
     <title>俄罗斯方块</title>
     <style>
         #root {
+            display: flex;
+            justify-content: center;
+        }
+        #panel {
             width: 300px;
             height: 300px;
-            background: black;
-            margin: 0 auto;
             position: relative;
+            background: black;
+        }
+        #next {
+            position: absolute;
+            width: 120px;
+            height: 120px;
         }
     </style>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <div id="panel"></div>
+        <div id="tip">
+            <div id="next"></div>
+        </div>
+    </div>
     <div style="text-align: center;">
         <button id="btnDown">向下移动</button>
         <button id="btnRight">向右移动</button>
