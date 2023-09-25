@@ -3,7 +3,7 @@
 // import { SquareGroup } from "./core/SquareGroup";
 // import { LShape, createTeris } from "./core/Teris";
 // import { SquarePageViewer } from "./core/viewer/SquarePageViewer";
-// import $ from 'jquery'
+import $ from 'jquery'
 // import { MoveDirection } from './core/types';
 
 import { Game } from "./core/Game";
@@ -36,4 +36,8 @@ import { GamePageViewer } from "./core/viewer/GamePageViewer";
 
 // 创建一个 game 对象
 var g = new Game(new GamePageViewer())
-// g.start();
+g.start();
+
+$('#pause').click(() => {
+    g.pause()
+})

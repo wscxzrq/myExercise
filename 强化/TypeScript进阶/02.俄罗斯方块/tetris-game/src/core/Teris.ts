@@ -89,7 +89,7 @@ export class LineShape extends SquareGroup{
 
 export const shapes = [TShape,LShape,LMirrorShape,SShape,SMirrorShape,SquareShape,LineShape]
 
-export const colors = ['red','#fff','green','blue','orange']
+export const colors = ['red','pink','green','blue','orange']
 /**
  * 随机产生一个俄罗斯方块 （颜色随机，形状随机）
  * @param centerPoint 
