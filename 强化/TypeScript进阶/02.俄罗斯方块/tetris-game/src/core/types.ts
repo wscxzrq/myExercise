@@ -1,3 +1,4 @@
+import { Game } from "./Game";
 import { SquareGroup } from "./SquareGroup"
 
 /**
@@ -38,13 +39,25 @@ export enum GameStatus {
 
 export interface GameViewer {
     /**
-     * 
+     * 显示下一个 
      * @param teris 下一个方块对象
      */
-    showNext(teris:SquareGroup): void; // 显示下一个 
+    showNext(teris:SquareGroup): void;
+    
     /**
-     * 
+     * 切换方块显示
      * @param teris 切换方块的方块对象
      */
-    switch(teris:SquareGroup): void; // 切换方块显示
+    switch(teris:SquareGroup): void;
+
+    /**
+     * 完成界面的初始化
+     */
+    init(game:Game): void;
+
+    /**
+     * 显示分数
+     * @param score 分数 
+     */
+    // showScore(score:number): void
 }

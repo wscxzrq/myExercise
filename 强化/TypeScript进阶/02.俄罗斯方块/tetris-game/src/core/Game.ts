@@ -1,4 +1,5 @@
 import GameConfig from "./GameConfig";
+import { Square } from "./Square";
 import { SquareGroup } from "./SquareGroup";
 import { createTeris } from "./Teris";
 import { TerisRule } from "./TerisRule";
@@ -13,13 +14,16 @@ export class Game {
     // 下一个方块
     private _nextTeris:SquareGroup = createTeris({x:0,y:0});
     // 计时器
-    private _timer?:number
+    private _timer?:number;
     // 自动下落的间隔时间
-    private _duration:number = 1000
+    private _duration:number = 1000;
+    // 当前游戏中已存在的小方块
+    private _exists:Square[] = [];
 
     constructor(private _viewer:GameViewer) {
         this.resetCenterPoint(GameConfig.nextSize.width,this._nextTeris);
         this._viewer.showNext(this._nextTeris);
+        this._viewer.init(this);
     }
 
     /**
@@ -54,7 +58,7 @@ export class Game {
      */
     control_left() {
         if(this._curTeris && this._gameStatus === GameStatus.playing) {
-            TerisRule.move(this._curTeris,MoveDirection.left);
+            TerisRule.move(this._curTeris,MoveDirection.left,this._exists);
         }
     }
 
@@ -63,7 +67,7 @@ export class Game {
      */
     control_right() {
         if(this._curTeris && this._gameStatus === GameStatus.playing) {
-            TerisRule.move(this._curTeris,MoveDirection.right);
+            TerisRule.move(this._curTeris,MoveDirection.right,this._exists);
         }
     }
 
@@ -72,7 +76,9 @@ export class Game {
      */
     control_dowm() {
         if(this._curTeris && this._gameStatus === GameStatus.playing) {
-            TerisRule.moveDirectly(this._curTeris,MoveDirection.down);
+            TerisRule.moveDirectly(this._curTeris,MoveDirection.down,this._exists);
+            // 发生触底
+            this.hitBottom();
         }
     }
 
@@ -81,7 +87,7 @@ export class Game {
      */
     control_rotate() {
         if(this._curTeris && this._gameStatus === GameStatus.playing) {
-            TerisRule.rotate(this._curTeris);
+            TerisRule.rotate(this._curTeris,this._exists);
         }
     }
 
@@ -100,7 +106,10 @@ export class Game {
          */
         this._timer = setInterval(() => {
             if(this._curTeris) {
-                TerisRule.move(this._curTeris,MoveDirection.down);
+                if(!TerisRule.move(this._curTeris,MoveDirection.down,this._exists)) {
+                    // 触底
+                    this.hitBottom();
+                }
             }
         },this._duration)
     }
@@ -111,6 +120,14 @@ export class Game {
     private switchTeris() {
         this._curTeris = this._nextTeris;
         this.resetCenterPoint(GameConfig.panelSize.width,this._curTeris);
+        // 有可能出问题，当前方块出现时，就已经和之前的方块重叠了
+        if(!TerisRule.canImove(this._curTeris.shape,this._curTeris.centerPoint,this._exists)) {
+            // 游戏结束
+            this._gameStatus = GameStatus.over;
+            clearInterval(this._timer);
+            this._timer = undefined;
+            return
+        }
         this._nextTeris = createTeris({x:0,y:0});
         this.resetCenterPoint(GameConfig.nextSize.width,this._nextTeris);
         this._viewer.switch(this._curTeris);
@@ -127,10 +144,23 @@ export class Game {
 
         // 判断所有小方块中是否存在纵坐标小于 0 的如果存在那么向下移动
         while(teris.squares.some(it => it.point.y < 0)) {
-            teris.squares.forEach(it => it.point = {
-                x:it.point.x,
-                y:it.point.y + 1
-            });
+            teris.centerPoint = {
+                x:teris.centerPoint.x,
+                y:teris.centerPoint.y + 1
+            }
         }
+    }
+
+    /**
+     * 触底操作
+     */
+    private hitBottom() {
+        // 将当前俄罗斯方块包含的小方块加入到已存在的方块数组中
+        this._exists.push(...this._curTeris!.squares);
+        // 处理移除
+        const num = TerisRule.deleteSquares(this._exists);
+        // 切换方块
+        this.switchTeris();
+
     }
 }
