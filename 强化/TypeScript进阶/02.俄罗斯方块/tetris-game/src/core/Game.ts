@@ -9,21 +9,58 @@ import { GameStatus, GameViewer, MoveDirection } from "./types";
 export class Game {
     // 游戏状态
     private _gameStatus:GameStatus = GameStatus.init;
+
+    public get gameStatus() {
+        return this._gameStatus;
+    }
+
     // 当前玩家操作的方块
     private _curTeris?:SquareGroup;
     // 下一个方块
-    private _nextTeris:SquareGroup = createTeris({x:0,y:0});
+    private _nextTeris:SquareGroup;
     // 计时器
     private _timer?:number;
     // 自动下落的间隔时间
     private _duration:number = 1000;
     // 当前游戏中已存在的小方块
     private _exists:Square[] = [];
+    // 积分
+    private _score:number = 0;
+
+    public get score () {
+        return this._score;
+    }
+
+    public set score (val) {
+        this._score = val;
+        this._viewer.showScore(this._score);
+    }
 
     constructor(private _viewer:GameViewer) {
+        this._nextTeris = createTeris({x:0,y:0});
+        this.createNext();
+        this._viewer.init(this);
+        this._viewer.showScore(this._score);
+          
+    }
+    // 创建下一个方块
+    private createNext() {
+        this._nextTeris = createTeris({x:0,y:0}); // 没有实际意义，为了不让 TS代码报错
         this.resetCenterPoint(GameConfig.nextSize.width,this._nextTeris);
         this._viewer.showNext(this._nextTeris);
-        this._viewer.init(this);
+    }
+    // 初始化 用于游戏结束后重新开始游戏
+    private init() {
+        this._exists.forEach(it => {
+            if(it.viewer) {
+                it.viewer.remove();
+            }
+        })
+        this._exists = [];
+        this.createNext();
+        this._curTeris = undefined;
+        this.score = 0;
+        this._viewer.showScore(0);
     }
 
     /**
@@ -34,12 +71,17 @@ export class Game {
         if(this._gameStatus === GameStatus.playing) {
             return
         }
+        // 从游戏结束到开始
+        if(this._gameStatus === GameStatus.over) {
+            this.init();
+        }
         this._gameStatus = GameStatus.playing;
         if(!this._curTeris) {
             // 给当前玩家操作的方块赋值
             this.switchTeris();
         }
         this.autoDrop();
+        this._viewer.onGameStart();
     }
 
     /**
@@ -50,6 +92,7 @@ export class Game {
             this._gameStatus = GameStatus.pause;
             clearInterval(this._timer);
             this._timer = undefined;
+            this._viewer.onGamePause();
         }
     }
 
@@ -90,7 +133,6 @@ export class Game {
             TerisRule.rotate(this._curTeris,this._exists);
         }
     }
-
     /**
      * 控制方块的自由下落
      */
@@ -119,6 +161,12 @@ export class Game {
      */
     private switchTeris() {
         this._curTeris = this._nextTeris;
+        // 如果游戏结束，那么清除当前展示区域的方块
+        this._curTeris.squares.forEach(it => {
+            if(it.viewer) {
+                it.viewer.remove();
+            }
+        })
         this.resetCenterPoint(GameConfig.panelSize.width,this._curTeris);
         // 有可能出问题，当前方块出现时，就已经和之前的方块重叠了
         if(!TerisRule.canImove(this._curTeris.shape,this._curTeris.centerPoint,this._exists)) {
@@ -126,12 +174,11 @@ export class Game {
             this._gameStatus = GameStatus.over;
             clearInterval(this._timer);
             this._timer = undefined;
+            this._viewer.onGameOver();
             return
         }
-        this._nextTeris = createTeris({x:0,y:0});
-        this.resetCenterPoint(GameConfig.nextSize.width,this._nextTeris);
+        this.createNext();
         this._viewer.switch(this._curTeris);
-        this._viewer.showNext(this._nextTeris);
     }
 
     /**
@@ -159,8 +206,27 @@ export class Game {
         this._exists.push(...this._curTeris!.squares);
         // 处理移除
         const num = TerisRule.deleteSquares(this._exists);
+        // 增加积分
+        this.addScore(num);
         // 切换方块
         this.switchTeris();
 
+    }
+
+    /**
+     * 增加积分
+     * @param lineNum 消除的行数
+     */
+    private addScore(lineNum:number) {
+        if(lineNum === 0) return
+        else if(lineNum === 1) {
+            this.score += 10;
+        }else if(lineNum === 2) {
+            this.score += 25;
+        }else if(lineNum === 3) {
+            this.score += 50;
+        }else {
+            this.score += 100;
+        }
     }
 }

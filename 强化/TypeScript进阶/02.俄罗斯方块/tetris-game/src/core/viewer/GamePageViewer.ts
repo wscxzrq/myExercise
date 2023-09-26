@@ -1,14 +1,50 @@
 import { Game } from "../Game";
 import GameConfig from "../GameConfig";
 import { SquareGroup } from "../SquareGroup";
-import { GameViewer } from "../types";
+import { GameStatus, GameViewer } from "../types";
 import PageConfig from "./PageConfig";
 import { SquarePageViewer } from "./SquarePageViewer";
 import $ from 'jquery'
 // 控制显示
 export class GamePageViewer implements GameViewer {
+    /**
+     * 游戏暂停
+     */
+    onGamePause(): void {
+        this.msgDom.css({
+            display:'flex'
+        });
+        this.msgDom.find('p').html('游戏暂停');
+    }
+
+    /**
+     * 游戏开始
+     */
+    onGameStart(): void {
+        this.msgDom.css({
+            display:'none'
+        });
+    }
+
+    /**
+     * 游戏结束
+     */
+    onGameOver(): void {
+        this.msgDom.css({
+            display:'flex'
+        });
+        this.msgDom.find('p').html('游戏结束');
+    }
+
+    // 设置分数
+    showScore(score: number): void {
+        this.scoreDom.html(score.toString());
+    }
+    
     private nextDom = $('#next');
     private panelDom = $('#panel');
+    private scoreDom = $('#score');
+    private msgDom = $('#msg');
 
     showNext(teris: SquareGroup): void {
         teris.squares.forEach(sq => {
@@ -46,6 +82,12 @@ export class GamePageViewer implements GameViewer {
                 game.control_right();
             }else if(e.keyCode === 40) { // 按了下
                 game.control_dowm();
+            }else if(e.keyCode == 32) { // 暂停
+                if(game.gameStatus === GameStatus.playing) {
+                    game.pause();
+                }else{
+                    game.start();
+                }
             }
         })
     }

@@ -59,5 +59,20 @@ export interface GameViewer {
      * 显示分数
      * @param score 分数 
      */
-    // showScore(score:number): void
+    showScore(score:number): void
+
+    /**
+     * 游戏暂停触发的事件
+     */
+    onGamePause():void
+
+    /**
+     * 游戏开始触发的事件
+     */
+    onGameStart():void
+
+    /**
+     * 游戏结束触发的事件
+     */
+    onGameOver():void
 }

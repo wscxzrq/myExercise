@@ -36,8 +36,3 @@ import { GamePageViewer } from "./core/viewer/GamePageViewer";
 
 // 创建一个 game 对象
 var g = new Game(new GamePageViewer())
-g.start();
-
-$('#pause').click(() => {
-    g.pause()
-})

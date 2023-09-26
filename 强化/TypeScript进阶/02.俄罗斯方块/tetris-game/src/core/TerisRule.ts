@@ -125,7 +125,7 @@ export class TerisRule {
         const minY = Math.min(...ys);
         // 循环判断 每一行是否可以消除 
         let num = 0;
-        for (let y = minY; y < maxY; y++){
+        for (let y = minY; y <= maxY; y++){
             if(this.deleteLine(exists,y)) {
                 num ++
             }
@@ -149,15 +149,16 @@ export class TerisRule {
                 if(it.viewer) {
                     it.viewer.remove();
                 }
-                // 剩下的 y 坐标比当前 y 小的方块，y+1 (y坐标是从上往下增加的)
-                exists.filter(it => it.point.y < y).forEach(sq => {
-                    sq.point = {
-                        x:sq.point.x,
-                        y:sq.point.y + 1
-                    }
-                })
+                // 从数组中移除
                 const index = exists.indexOf(it);
                 exists.splice(index,1);
+            })
+            // 剩下的 y 坐标比当前 y 小的方块，y+1 (y坐标是从上往下增加的)
+            exists.filter(it => it.point.y < y).forEach(sq => {
+                sq.point = {
+                    x:sq.point.x,
+                    y:sq.point.y + 1
+                }
             })
             return true
         }
