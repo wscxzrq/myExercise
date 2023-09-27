@@ -21,7 +21,7 @@ export class Game {
     // 计时器
     private _timer?:number;
     // 自动下落的间隔时间
-    private _duration:number = 1000;
+    private _duration:number = 1500;
     // 当前游戏中已存在的小方块
     private _exists:Square[] = [];
     // 积分
@@ -34,6 +34,17 @@ export class Game {
     public set score (val) {
         this._score = val;
         this._viewer.showScore(this._score);
+        const level = GameConfig.levels.filter(i => i.score <= this._score).pop()!;
+        if(level.duration === this._duration) {
+            return
+        }
+        this._duration = level.duration;
+        if(this._timer) {
+            clearInterval(this._timer);
+            this._timer = undefined;
+            this.autoDrop();
+        }
+         
     }
 
     constructor(private _viewer:GameViewer) {
